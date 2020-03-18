@@ -1,27 +1,19 @@
 1. Check if the process is >2 if not continue to step 3 else go to step 2;
-2. Start sorting the array
-   2.a Get the values of the sorted array, alternatingly store the [max and min burst time] until you end up on its middle value;
-   2.b If the total numbers of elements in the array is an odd number the [single] middle value will be at the last index;	
+2. Get the values of the sorted array, alternatingly store the [max and min burst time] until you end up on its middle value; (KLEENE)*****
+   If the total no. of process is an odd number the last index will be set stored at the middle of the array;
 
 3. Quantum time of the process, subtract the maximum burst time with the minimum burst time of the current process and divide it by two then return its value, if process size is <=2 return the minimum burst time;
 
 4. Start to calculate the waiting time for each process
-   4.a Create an empty array with the same size of the process to store the waiting time of each process, a temporary array with the same size and value as the process, and another variable to store up time value;
-   //While loop
-   4.b An integer variable checker will be created with a value of 1;
-   //for loop
-   4.c Check if the current burst time of the selected process is greater than 0 [> 0] if yes, the value of the checker will be set to [0] then it will continue to 5.d, if not go to step 4.e;
-   4.d If the current burst time of the selected process has a greater value than the quantum time, then quantum time will be subtracted to the current burst time [process[current] - qt] and the quantum time will be added to time variable [time += qt], continue to step 4.e;
+   4.a Check if the current burst time of the selected process is greater than 0 [> 0] if yes, the value of the checker will be set to [0] then it will continue to 4.b, if not go to step 4.c;
+   4.b If the current burst time of the selected process has a greater value than the quantum time, then quantum time will be subtracted to the current burst time [process[current] - qt] and the quantum time will be added to time variable [time += qt], continue to step 4.e;
        If false, the remaining burst time value of the current process will be added to time variable [time += process[currrent]], then the waiting time array with the same index as the process will store a value of time subtracted to the original burst time value of the current process[waiting_time[current] = time - process[current]];
        Set the burst time of the current process to 0;
-   4.e If the loop is over go to step 4.f, if false go to the next process and execute step 4.c
-   //checker
-   4.f If the checker has a value of 0 go to step 4.e, if the checker has a value of 1 go to step 5;
+       If false go to the next process and execute step 4.a, If the loop is over go to step 4.c (KLEENE)*****
+   4.c If the checker has a value of 0 go to step 4.e, if the checker has a value of 1 go to step 5;
 
-5. Start to calculate the turn around time for each process
-  5.a Create an empty array with the same size of the process to store the turn aroun time of each process;
-    //for loop
-  5.b current turn around process will get the sum of the current waiting time and current burst time [turnAround[current] = waitingTime[current] + process[current] repeat until last process then go to step 6;
+5. Start to calculate the turn around time for each process create empty array then;
+   the current turn around process will get the sum of the current waiting time and current burst time [turnAround[current] = waitingTime[current] + process[current] repeat until last process then go to step 6;
 
 6.Display the result
  6.a Print the process value, burst time, waiting time, average time repeat until last process.
